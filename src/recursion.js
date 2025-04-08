@@ -5,21 +5,60 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
+  //base
+  if(n < 0){
+    return null;
+  }
+  //recursion
+
+  if(n <= 1){
+    return 1;
+  }else {
+    return n * factorial(n - 1);
+  }
+  
+
  
 };
 
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
+  //base 
+  if(array.length === 0){
+    return 0;
+  }
+  //hits base case when the recursion has iterated throughout the whole array
+
+  //recursion
+  return array[0] + sum(array.slice(1))
+  //just return the current iteration in the array concatenated w/ 
+  //the result of invoking the sum recursion on every index in the array
+  //after the 0 index
+
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  //base
+  if(n <= 0){
+    return Math.abs(n);
+  }
+
+  //recursion
+  if(n > 1){
+    return false
+  }else{
+    return true;
+  }
+
+
 };
 
 // 5. Sum all integers below a given integer.
@@ -31,6 +70,13 @@ var sumBelow = function(n) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+
+  //base
+ 
+
+  //recursion
+
+
 };
 
 // 7. Compute the exponent of a number.
@@ -69,6 +115,8 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
+
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
