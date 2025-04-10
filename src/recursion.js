@@ -47,15 +47,16 @@ var arraySum = function(array) {
 // 4. Check if a number is even.
 var isEven = function(n) {
   //base
-  if(n <= 0){
-    return Math.abs(n);
+  if(isNaN(n)){
+    return n;
   }
+  
 
   //recursion
-  if(n > 1){
-    return false
+  if(n < 0 || n > 1){
+    return (n & 1) === 0
   }else{
-    return true;
+    return isEven(n - 2)
   }
 
 
