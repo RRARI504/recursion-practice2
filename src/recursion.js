@@ -48,17 +48,23 @@ var arraySum = function(array) {
 var isEven = function(n) {
   //base
   if(isNaN(n)){
-    return n;
+    return false;
   }
   
 
   //recursion
-  if(n < 0 || n > 1){
-    return (n & 1) === 0
-  }else{
-    return isEven(n - 2)
+  if(n < 0){//normalize negative nums
+    n = -n
   }
+   if(n === 0){//if n = 0 return true for even nums
+    return true;
+  }
+  if(n === 1){ //if n = 1 return false for odd nums
+    return false
 
+  }
+  return isEven(n - 2) //recursively subtract 2 from n 
+  //until it his 0 (even) or 1 (odd)
 
 };
 
@@ -66,6 +72,22 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  //base
+  if(n === 0){//if number is zero return zero
+    return 0;
+  }
+  //recursion
+  if(n > 0){ //if n is > 0
+    return (n - 1) + sumBelow(n - 1)
+    //return n - 1 and add n - 1 recursively until hitting zero
+  }  
+
+  if(n < 0){//if n < 0
+    return (n + 1) + sumBelow(n + 1)
+    //return n + 1 and add n + 1 recursively until hitting zero
+  }  
+  
+
 };
 
 // 6. Get the integers in range (x, y).
