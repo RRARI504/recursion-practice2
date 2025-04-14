@@ -50,8 +50,6 @@ var isEven = function(n) {
   if(isNaN(n)){
     return false;
   }
-  
-
   //recursion
   if(n < 0){//normalize negative nums
     n = -n
@@ -87,17 +85,12 @@ var sumBelow = function(n) {
     //return n + 1 and add n + 1 recursively until hitting zero
   }  
   
-
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
-
-  //base
- 
-
-  //recursion
+  
 
 
 };
