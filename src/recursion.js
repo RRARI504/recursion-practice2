@@ -115,16 +115,19 @@ var range = function(x, y) {
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
   //base
-  if(exp === 0){
+  if(exp === 0){ //if exp equal zero return 1 to stop recursion
+    //cant raise number to zeroth power
     return 1;
-  }
-  if(exp === 1){
-    return base;
   }
 
   //recursion
-  if(exp % 2 === 0 ){
-
+  if(exp > 0){
+    return base * exponent(base, exp - 1)
+    //if exponent greater than 0 
+    //return base * call recursive function that takes in current base and reduces exponenet by 1
+  }else{
+    return 1 / exponent(base, -exp)
+    //else return 1 divided by calling the exponent function on the base and negative exponents
   }
 
 };
