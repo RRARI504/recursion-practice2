@@ -138,24 +138,50 @@ var exponent = function(base, exp) {
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
   //base
-  if(n === 0){
-    return false;
+  if(n < 1){//if n is negative return false
+    return false
+  }else if(n === 1){ //if n equal to 1 return true
+    return true
+  }else if(n % 2 !== 0 ){//if n is not divisible by two retunrn false
+    return false
 
   }
 
   //recursion
-  if(n > 1 && n % 2 === 0){
-    return powerOfTwo()
-
-  }
+  return powerOfTwo(n / 2)
+  //to keep recursion going call function on number / 2
 };
+
+
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
+  //base
+  if(string === ''){
+    return '';
+  }//if the string is equal to an empty string stop the recursion
+
+  //recursion
+  return reverse(string.slice(1)) + string[0]
+  //return invocation of reverse function on second index in string
+  // concatenated w the first index
+  
+
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  console.log()
+  //base
+  if(string === ''){
+    return '';
+  }
+
+  //recursion 
+  if(palindrome(strin)){
+
+  }
+
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
