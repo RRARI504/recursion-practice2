@@ -137,6 +137,17 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  //base
+  if(n === 0){
+    return false;
+
+  }
+
+  //recursion
+  if(n > 1 && n % 2 === 0){
+    return powerOfTwo()
+
+  }
 };
 
 // 9. Write a function that accepts a string a reverses it.
