@@ -171,16 +171,19 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-  console.log()
-  //base
-  if(string === ''){
-    return '';
+  string = string.toLowerCase().replace(/[^a-z0-9]/g, '');
+  // Base case
+  if (string.length <= 1) {
+    return true;
   }
 
-  //recursion 
-  if(palindrome(strin)){
-
+  // Recursive case
+  if (string[0] !== string[string.length - 1]) {
+    return false;
   }
+
+  return palindrome(string.slice(1, -1));
+  
 
 };
 
@@ -197,6 +200,16 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
+  if(y === 0){
+    return 0;
+  }
+  if(y > 0){
+    return x + multiply(x, y - 1)
+
+  }else{
+    return -multiply(x, -y)
+  }
+
 
 
 };
@@ -204,6 +217,14 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
+  if(y === 1 || y === 0){
+    return x;
+  }
+
+  if(y > 0){
+    return x + divide(x, y)
+
+  }
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
