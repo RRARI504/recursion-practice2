@@ -1,5 +1,7 @@
 // Solve all of the following prompts using recursion.
 
+const { util } = require("chai");
+
 // 1. Calculate the factorial of a number.  The factorial of a non-negative integer n,
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
@@ -217,14 +219,21 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
-  if(y === 1 || y === 0){
-    return x;
+
+  if(x < 0){
+    return -divide(-x, y);
   }
 
-  if(y > 0){
-    return x + divide(x, y)
-
+  if(y < 0){
+    return -divide(x, -y);
   }
+
+  if(x < y){
+    return 0;
+  }
+
+  return 1 + divide(x - y, y)
+  
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
@@ -236,38 +245,88 @@ var gcd = function(x, y) {
   
 };
 
-// 15. Write a function that compares each character of two strings and returns true if
-// both are identical.
+// 15. Write a function that compares each character of two strings and 
+//returns true if both are identical.
 // compareStr('house', 'houses') // false
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  //base
+  if(str1 === '' && str2 === ''){//if both strings are empty they are equal 
+    return true; 
+  }
+  //recursion 
+  if(str1[0] !== str2[0]){//if the first character inthe strings are not equal
+    // or one string is empty than they are not equal.
+    return false
+  }
+  
+  return compareStr(str1.slice(1), str2.slice(1))
+  //recursively call the compareStr function on everyt character after the first 
+  //character
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str){
+  //base 
+  if(str === ''){//if the string doesnt exist return an empty array
+    return [];
+  }
+
+  //recursion
+ return [str[0]].concat(createArray(str.slice(1)))
+ //return the first char of the array in a sub array [str[0]]
+ //
 };
 
 // 17. Reverse the order of an array
 var reverseArr = function (array) {
+  //base
+  if(array.length <= 1){
+    return array; 
+  }
+  return [array[array.length - 1]].concat(reverseArr(array.slice(0, array.length - 1)))
+
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
+  //base
+  if(length === 0){
+    return [];
+  }
+
+  //recursion 
+return [value].concat(buildList(value, length - 1))
+//return a new array w/ value as the element and invoke the buildList function on the value and the length - 1
+
+
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  //base
+  if(array.length === 0){
+    return 0;
+  }
+  return (array[0] === value ? 1 : 0) + countOccurrence(array.slice(1), value)
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback, output=[]) {
+  if(array.length === 0){
+    return output;
+  }
+
+ output.push(callback(array[0]))
+
+ return rMap(array.slice(1), callback, output)
   
 };
 
