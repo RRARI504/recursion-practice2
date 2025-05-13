@@ -363,17 +363,51 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
+  if(n === 0){
+    return 0
+  }
+
+  if(n === 1){
+    return 1
+  }
+
+  return nthFibo(n - 1) + nthFibo(n - 2)
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(input) {
+  //base
+  if(input.length === 0){ //if the input array is empty return an empty array
+    return []
+  }
+
+  let [first, ...rest] = input//assign first to the first element in the array and rest is a 
+  //a new array containing the remaining elements
+  return [first.toUpperCase(), ...capitalizeWords(rest)]
+  //return the first element capitalized
+  //recursively calls capitalizeWords on the rest of the elements in the array and combine using spread
+  //operator.
+
+  
+
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
 var capitalizeFirst = function(array) {
+  if(array.length === 0){//if the input array is empty return an empty array
+    return [];
+  }
+
+  let[first, ...rest] = array//assign first to the first element in the array and rest is a 
+  //a new array containing the remaining elements
+  let frst = first[0].toUpperCase() + first.slice(1) //let frst equal the first charachter in each element
+  //upper cased concatenated w/ the rest of the string
+
+  return [frst, ...capitalizeFirst(rest)]//return the uppercased string and recursively call capitalizeFirst
+  //on the rest of the elements
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
@@ -396,6 +430,7 @@ var flatten = function(arrays) {
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
 var letterTally = function(str, obj) {
+  
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
